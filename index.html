@@ -1,0 +1,150 @@
+<html>
+  <head>
+    <style>
+      body {
+        background: #343434;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .loader {
+        width: 100px;
+        height: 100px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .loader_text {
+        font-family: sans-serif;
+        font-size: 15px;
+        color: #fafafa;
+        animation: 3s ease-in-out infinite textZoomInOut;
+        will-change: transform;
+      }
+
+      .loader_round {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        position: absolute;
+        background: #ccc;
+        will-change: transform; /* Оптимизация бразуера для указания свойств, которые будут изменяться */
+      }
+
+      .round1 {
+        left: 0;
+        top: 0;
+        animation: 3s ease-in-out infinite moveround1;
+      }
+
+      .round2 {
+        left: 0;
+        top: 100%;
+        animation: 3s ease-in-out infinite moveround2;
+      }
+
+      .round3 {
+        left: 100%;
+        top: 0;
+        animation: 3s ease-in-out infinite moveround3;
+      }
+
+      .round4 {
+        left: 100%;
+        top: 100%;
+        animation: 3s ease-in-out infinite moveround4;
+        /* ease in out - функция перехода от 0 до 100%, infinite = бесконечно повторяется */
+      }
+      /* Оптимизированная анимация */
+      @keyframes moveround1 {
+        25% {
+          transform: translateX(100px);
+        }
+
+        50% {
+          transform: translateX(100px) translateY(100px);
+        }
+
+        75% {
+          transform: translateX(0px) translateY(100px);
+        }
+      }
+
+      @keyframes moveround2 {
+        25% {
+          transform: translateY(-100px);
+        }
+
+        50% {
+          transform: translateX(100px) translateY(-100px);
+        }
+
+        75% {
+          transform: translateX(100px) translateY(0px);
+        }
+      }
+
+      @keyframes moveround3 {
+        25% {
+          transform: translateY(100px);
+        }
+
+        50% {
+          transform: translateX(-100px) translateY(100px);
+        }
+
+        75% {
+          transform: translateX(-100px) translateY(0);
+        }
+      }
+
+      @keyframes moveround4 {
+        25% {
+          transform: translateX(-100px);
+        }
+
+        50% {
+          transform: translateX(-100px) translateY(-100px);
+        }
+
+        75% {
+          transform: translateX(0) translateY(-100px);
+        }
+      }
+
+      @keyframes textZoomInOut {
+        0% {
+          transform: scale(0.5);
+        }
+
+        25% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(0.5);
+        }
+
+        75% {
+          transform: scale(1);
+        }
+
+        100% {
+          transform: scale(0.5);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loader">
+      <span class="loader_text">LOADING</span>
+      <div class="loader_round round1"></div>
+      <div class="loader_round round2"></div>
+      <div class="loader_round round3"></div>
+      <div class="loader_round round4"></div>
+    </div>
+  </body>
+</html>
